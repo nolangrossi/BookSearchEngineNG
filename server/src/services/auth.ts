@@ -15,7 +15,10 @@ export const authenticateToken = ({ req }: any) => {
   }
 
   try {
+    console.log("token: ",token);
+    console.log("JWT Secret key: ",process.env.JWT_SECRET_KEY);
     const { data }: any = jwt.verify(token, process.env.JWT_SECRET_KEY || '', { maxAge: '2hr' });
+    console.log("Data: ",data);
     req.user = data;
   } catch (err) {
     console.log(err);
@@ -26,6 +29,7 @@ export const authenticateToken = ({ req }: any) => {
 export const signToken = (username: string, email: string, _id: unknown) => {
   const payload = { username, email, _id };
   const secretKey: any = process.env.JWT_SECRET_KEY;
+  console.log("Secret Key: ",secretKey);
   return jwt.sign({ data: payload }, secretKey, { expiresIn: '2h' });
 };
 

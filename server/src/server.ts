@@ -7,7 +7,8 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './services/auth.js';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -43,6 +44,7 @@ const startApolloServer = async () => {
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
     console.log(`🚀 Use GraphQL at http://localhost:${PORT}/graphql`);
+    console.log(process.env.JWT_SECRET_KEY);
   });
 };
 
