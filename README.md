@@ -49,9 +49,7 @@
 
 ## Usage
 
-![Walkthrough]
-
-Application is deployed on [Render]
+Application is deployed on [Render](https://booksearchengineng.onrender.com)
 
 ### Core Functionality
 
